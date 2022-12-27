@@ -5,21 +5,24 @@
 # @menupath Tools.GptHidra
 # @toolbar
 
-import requests
+import urllib2
+import json
 from ghidra.util.task import TaskMonitor
 from ghidra.app.decompiler import DecompInterface
 
 # Get your API key from https://beta.openai.com/account/api-keys
 API_KEY = ''
 
-
 def explainFunction(c_code):
-    response = requests.post(
-        "https://api.openai.com/v1/completions",
-        headers={"Authorization": "Bearer {}".format(API_KEY)},
-        json={"prompt": "Explain this code:\r\n" + c_code, "max_tokens": 2048, "model": "text-davinci-003"},
-    )
-    return response.json()["choices"][0]["text"]
+    url = 'https://api.openai.com/v1/completions'
+    data = {"prompt": "Explain this code:\r\n" + c_code, "max_tokens": 2048, "model": "text-davinci-003"}
+    data = json.dumps(data)
+
+    req = urllib2.Request(url, data,
+                          {'Authorization': 'Bearer ' + API_KEY,
+                           'Content-Type': 'application/json'})
+    response = urllib2.urlopen(req).read()
+    return json.loads(response)["choices"][0]["text"]
 
 
 def getCurrentDecompiledFunction():
