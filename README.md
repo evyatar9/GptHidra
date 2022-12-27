@@ -8,15 +8,16 @@ Ghidra plugin that asks [OpenAI Chat GPT](https://chat.openai.com/chat) to expla
 
 1. [API_KEY](https://beta.openai.com/account/api-keys) to use Open AI API
 
-2. The following are needed to use this plugin:
+## Tested on
 
 Tool | Version |Source |
 |---|---|---|
-| Ghidra | `>= 10.2` | https://ghidra-sre.org |
+| Ghidra | `>= 10.1.5` | https://ghidra-sre.org |
 
-Note: ```Ghidra >= 10.2``` requires [JDK 17 64-bit](https://adoptium.net/temurin/releases/).
 
-## Install
+## How to Install?
+
+Add the script [GptHidra.py](./GptHidra.py) to Ghidra Scripts.
 
 Open ```Ghidra Script Manager``` and create a new script:
 
