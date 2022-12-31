@@ -1,109 +1,33 @@
 # GptHidra
 
-Ghidra plugin that asks [OpenAI Chat GPT](https://chat.openai.com/chat) to explain functions! :)
+GptHidra is a Ghidra plugin that uses the [OpenAI Chat GPT](https://chat.openai.com/chat) to explain functions. With GptHidra, you can easily understand the purpose and behavior of functions in your codebase.
 
-![example.JPG](images/example.JPG)
+![example.gif](images/example.gif)
 
 ## Requirements
 
-1. [API_KEY](https://beta.openai.com/account/api-keys) to use Open AI API
+- Ghidra `>= 10.1.5` (https://ghidra-sre.org).
+- An API key for the OpenAI Chat GPT API (https://beta.openai.com/account/api-keys).
 
-## Tested on
+## Installation
 
-Tool | Version |Source |
-|---|---|---|
-| Ghidra | `>= 10.1.5` | https://ghidra-sre.org |
+1. Download the GptHidra script [GptHidra.py](./GptHidra.py).
+2. Open the Ghidra Script Manager (found in the `Tools` menu).
+3. Click the `New` button to create a new script.
+4. Select `Python` as the language and give the script the name `GptHidra.py`.
+5. Paste the contents of the [GptHidra.py](./GptHidra.py) script into the editor window.
+6. Replace `API_KEY = ''` with your [OpenAI Chat GPT API key](https://beta.openai.com/account/api-keys).
+7. Click the `Save` button to save the script.
 
+## Usage
 
-## How to Install?
+To use GptHidra, select a function in the Ghidra decompiler and do one of the following:
 
-Add the script [GptHidra.py](./GptHidra.py) to Ghidra Scripts.
+1. Press `Ctrl + Alt + G` (you can edit the script to change this shortcut).
 
-Open ```Ghidra Script Manager``` and create a new script:
+2. Go to `Tools -> GptHidra` (you can edit the script to change this menu item).
 
-![scriptmanager.JPG](images/scriptmanager.JPG)
-
-Choose ```python```, Set the name ```GptHidra.py``` , Paste the content of [GptHidra.py](./GptHidra.py), Set your ```API_KEY``` and save it:
-```python
-# Ghidra plugin that asks OpenAI Chat GPT (https://chat.openai.com/chat) to explain functions! :)
-# @author evyatar9 (https://github.com/evyatar9)
-# @category API
-# @keybinding Ctrl-Alt-G
-# @menupath Tools.GptHidra
-# @toolbar
-
-import urllib2
-import json
-from ghidra.util.task import TaskMonitor
-from ghidra.app.decompiler import DecompInterface
-
-# Get your API key from https://beta.openai.com/account/api-keys
-API_KEY = ''
-
-def explainFunction(c_code):
-    url = 'https://api.openai.com/v1/completions'
-    data = {"prompt": "Explain this code:\r\n" + c_code, "max_tokens": 2048, "model": "text-davinci-003"}
-    data = json.dumps(data)
-
-    req = urllib2.Request(url, data,
-                          {'Authorization': 'Bearer ' + API_KEY,
-                           'Content-Type': 'application/json'})
-    response = urllib2.urlopen(req).read()
-    return json.loads(response)["choices"][0]["text"]
-
-
-def getCurrentDecompiledFunction():
-    # Reference: https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html
-
-    # Create a TaskMonitor object
-    monitor = TaskMonitor.DUMMY
-
-    # Create a DecompInterface object
-    decompiler = DecompInterface()
-
-    # Set the current program for the decompiler
-    decompiler.openProgram(currentProgram)
-
-    # Get the current address and the function containing it
-    currentAddress = currentLocation.getAddress()
-    functionName = getFunctionContaining(currentAddress)
-
-    # Decompile the function and get the resulting C code
-    return decompiler.decompileFunction(functionName, 30, monitor).getDecompiledFunction().getC()
-
-try:
-    c_code = getCurrentDecompiledFunction()
-    print(explainFunction(c_code))
-except Exception as e:
-    print(e)
-```
-
-![gpthidra.JPG](images/gpthidra.JPG)
-
-## How to use it?
-
-### Option 1
-
-1. Select the function
-2. Ctrl + Alt + G (You can edit the script to change it)
-
-### Option 2
-
-1. Select the function
-2. Tools -> GptHidra (You can edit the script to change it)
-
-![tools.JPG](images/tools.JPG)
-
-Example:
-
-![example.JPG](images/example.JPG)
-
-## References
-
-[https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
-
-[https://beta.openai.com/docs/](https://beta.openai.com/docs/)
-
+An explanation of the selected function will be printed to the Ghidra console.
 
 
 ## Contact
@@ -111,3 +35,14 @@ Example:
 Telegram: [@evyatar9](https://t.me/evyatar9)
 
 Discord: [evyatar9#5800](https://discordapp.com/users/812805349815091251)
+
+## Contributing
+
+If you would like to contribute to the GptHidra extension, feel free to submit a pull request or report any issues you encounter on the [GptHidra repository](https://github.com/evyatar9/GptHidra).
+
+
+## References
+
+[https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
+
+[https://beta.openai.com/docs/](https://beta.openai.com/docs/)
