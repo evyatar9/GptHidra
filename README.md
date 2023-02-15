@@ -46,3 +46,8 @@ If you would like to contribute to the GptHidra extension, feel free to submit a
 [https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
 
 [https://beta.openai.com/docs/](https://beta.openai.com/docs/)
+
+
+## Stargazers over time
+
+[![Stargazers over time](https://starchart.cc/evyatar9/GptHidra.svg)](https://starchart.cc/evyatar9/GptHidra)
