@@ -1,4 +1,4 @@
-# Ghidra plugin that asks OpenAI Chat GPT (https://chat.openai.com/chat) to explain functions.
+# Ghidra plugin that asks OpenAI Chat GPT (https://chat.openai.com/chat) to explain functions (OpenAI's GPT-4).
 # @author evyatar9 (https://github.com/evyatar9)
 # @category API
 # @keybinding Ctrl-Alt-G
@@ -13,7 +13,6 @@ from ghidra.app.decompiler import DecompInterface
 # https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4
 # Get your API key from https://beta.openai.com/account/api-keys
 API_KEY = ''
-
 
 def explainFunction(c_code):
     """
