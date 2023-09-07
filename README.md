@@ -8,7 +8,7 @@ GptHidra is a Ghidra plugin that uses the [OpenAI Chat GPT](https://chat.openai.
 
 **GPT-4 Integration**: Benefit from the latest advancements in natural language processing, providing even more insightful and accurate code explanations.
 
-[Learn more about accessing GPT-4](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4).
+[Learn more about accessing to GPT-4](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4).
 
 ## Requirements
 
@@ -18,7 +18,7 @@ GptHidra is a Ghidra plugin that uses the [OpenAI Chat GPT](https://chat.openai.
 ## Installation
 
 1. Download the GptHidra script [GptHidra.py](./GptHidra.py).
-2. Open the Ghidra Script Manager (found in the `Window` menu).
+2. Open the Ghidra Script Manager (found in the `Tools` menu).
 3. Click the `New` button to create a new script.
 4. Select `Python` as the language and give the script the name `GptHidra.py`.
 5. Paste the contents of the [GptHidra.py](./GptHidra.py) script into the editor window.

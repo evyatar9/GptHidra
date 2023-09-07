@@ -74,6 +74,5 @@ try:
     c_code = getCurrentDecompiledFunction()
     explanation = explainFunction(c_code)
     print(explanation)
-	
 except ValueError as e:
     print(e)
