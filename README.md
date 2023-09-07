@@ -4,6 +4,12 @@ GptHidra is a Ghidra plugin that uses the [OpenAI Chat GPT](https://chat.openai.
 
 ![example.gif](images/example.gif)
 
+## What's New
+
+**GPT-4 Integration**: Benefit from the latest advancements in natural language processing, providing even more insightful and accurate code explanations.
+
+[Learn more about accessing GPT-4](https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4).
+
 ## Requirements
 
 - Ghidra `>= 10.1.5` (https://ghidra-sre.org).

@@ -1,4 +1,4 @@
-# Ghidra plugin that asks OpenAI Chat GPT (https://chat.openai.com/chat) to explain functions! :)
+# Ghidra plugin that asks OpenAI Chat GPT (https://chat.openai.com/chat) to explain functions.
 # @author evyatar9 (https://github.com/evyatar9)
 # @category API
 # @keybinding Ctrl-Alt-G
@@ -10,6 +10,7 @@ import json
 from ghidra.util.task import TaskMonitor
 from ghidra.app.decompiler import DecompInterface
 
+# https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4
 # Get your API key from https://beta.openai.com/account/api-keys
 API_KEY = ''
 
@@ -24,8 +25,8 @@ def explainFunction(c_code):
         Returns:
             str: The explanation provided by the API.
     """
-    url = 'https://api.openai.com/v1/completions'
-    data = {"prompt": "Explain this code:\n" + c_code, "max_tokens": 2048, "model": "text-davinci-003"}
+    url = 'https://api.openai.com/v1/chat/completions'
+    data = {"messages":[ {"role": "user","content":"Explain code:\n" + c_code} ], "model": "gpt-4"}
     data = json.dumps(data)
 
     req = urllib2.Request(url, data,
@@ -36,7 +37,7 @@ def explainFunction(c_code):
     if "error" in response:
         raise ValueError(response["error"])
     else:
-        return response["choices"][0]["text"]
+        return response["choices"][0]["message"]["content"]
 
 
 def getCurrentDecompiledFunction():
