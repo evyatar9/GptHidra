@@ -40,7 +40,7 @@ An explanation of the selected function will be printed to the Ghidra console.
 
 Telegram: [@evyatar9](https://t.me/evyatar9)
 
-Discord: [evyatar9#5800](https://discordapp.com/users/812805349815091251)
+Discord: [evyatar9](https://discord.com/users/812805349815091251)
 
 ## Contributing
 
@@ -52,6 +52,12 @@ If you would like to contribute to the GptHidra extension, feel free to submit a
 [https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html](https://ghidra.re/ghidra_docs/api/ghidra/app/decompiler/DecompInterface.html)
 
 [https://beta.openai.com/docs/](https://beta.openai.com/docs/)
+
+
+## Support
+You can support my work buying me a coffee:
+
+[<img width=250 alt="buymeacoffe" src="https://cdn.buymeacoffee.com/buttons/v2/default-blue.png">](https://www.buymeacoffee.com/evyatar9)
 
 
 ## Stargazers over time
